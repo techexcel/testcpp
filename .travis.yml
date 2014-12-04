@@ -2,5 +2,7 @@ language: cpp
 compiler:
 - gcc
 - clang
-    # Change this to your needs
-script: ./configure && make
+before_script:
+  - travis_retry bundle
+  - if [ $TRAVIS_OS_NAME == linux ]; then travis_retry ./configure
+script: rake
